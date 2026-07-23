@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>
+        Inventaires
+    </title>
+
+</head>
+
+
+<body>
+
+
+<h1>
+    Butcher Shop Inventory
+</h1>
+
+
+<h2>
+    Inventaires reçus
+</h2>
+
+
+
+{% if inventories %}
+
+
+<table border="1" cellpadding="8">
+
+<tr>
+
+    <th>
+        Date création
+    </th>
+
+    <th>
+        Type
+    </th>
+
+    <th>
+        Articles
+    </th>
+
+    <th>
+        Réception
+    </th>
+
+</tr>
+
+
+
+{% for inventory in inventories %}
+
+
+<tr>
+
+
+<td>
+
+<a href="/inventory/{{ inventory['uuid'] }}">
+
+{{ inventory['created_at'] }}
+
+</a>
+
+</td>
+
+
+
+<td>
+
+{{ inventory['form_type'] }}
+
+</td>
+
+
+<td>
+
+{{ inventory['item_count'] }}
+
+</td>
+
+
+
+<td>
+
+{{ inventory['received_at'] }}
+
+</td>
+
+
+</tr>
+
+
+{% endfor %}
+
+
+</table>
+
+
+
+{% else %}
+
+
+<p>
+    Aucun inventaire reçu.
+</p>
+
+
+{% endif %}
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>
+Détail inventaire
+</title>
+
+</head>
+
+
+<body>
+
+
+<h1>
+Détail inventaire
+</h1>
+
+
+<p>
+Type :
+{{ inventory["form_type"] }}
+</p>
+
+
+<p>
+Créé le :
+{{ inventory["created_at"] }}
+</p>
+
+
+
+<h2>
+Articles
+</h2>
+
+
+
+{% for item in inventory["items"] %}
+
+
+<hr>
+
+
+<h3>
+Article {{ loop.index }}
+</h3>
+
+
+<ul>
+
+
+{% for key,value in item["data"].items() %}
+
+<li>
+
+<strong>
+{{ key }}
+</strong>
+
+:
+
+{{ value }}
+
+</li>
+
+
+{% endfor %}
+
+
+</ul>
+
+
+{% endfor %}
+
+
+
+<a href="/">
+Retour
+</a>
+
+
+
+</body>
+
+</html>
