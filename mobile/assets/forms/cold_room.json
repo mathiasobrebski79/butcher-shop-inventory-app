@@ -1,0 +1,23 @@
+{
+  "title": "Grande chambre froide",
+  "questions": [
+    {
+      "field": "name",
+      "label": "Dénomination",
+      "type": "text",
+      "required": true
+    },
+    {
+      "field": "product_type",
+      "label": "Type de produit",
+      "type": "select",
+      "options": [
+        "Carcasse",
+        "Prêt à découper",
+        "Caisse",
+        "Roll"
+      ],
+      "required": true
+    }
+  ]
+}

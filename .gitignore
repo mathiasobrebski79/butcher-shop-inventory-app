@@ -1,0 +1,106 @@
+# -------------------------
+# Flutter / Dart
+# -------------------------
+# Miscellaneous
+*.class
+*.log
+*.pyc
+*.swp
+**/.DS_Store
+**/.atom/
+**/.build/
+**/.buildlog/
+**/.history
+**/.svn/
+**/.swiftpm/
+**/migrate_working_dir/
+
+
+# Flutter/Dart/Pub related
+**/doc/api/
+
+
+**/.dart_tool/
+**/.flutter-plugins
+**/.flutter-plugins-dependencies
+**/.packages
+**/.pub-cache/
+**/.pub/
+**/build/
+
+# IDE Flutter
+**/.idea/
+**/.vscode/
+
+# Android generated files
+**/android/.gradle/
+**/android/local.properties
+**/android/key.properties
+
+# Android Studio will place build artifacts here
+**/android/app/debug
+**/android/app/profile
+**/android/app/release
+
+# iOS generated files
+**/ios/Pods/
+**/ios/.symlinks/
+**/ios/Flutter/Flutter.framework
+**/ios/Flutter/Flutter.podspec
+**/ios/Flutter/.last_build_id
+
+# Flutter screenshots / generated
+**/coverage/
+
+
+# -------------------------
+# Python
+# -------------------------
+
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environnements virtuels
+.venv/
+venv/
+env/
+
+# uv
+**/.uv/
+
+# Tests
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Typage
+.mypy_cache/
+.pyright/
+
+# IDE Python
+.idea/
+.vscode/
+
+
+# -------------------------
+# Bases locales
+# -------------------------
+
+*.sqlite
+*.sqlite3
+*.db
+
+# -------------------------
+# Variables sensibles
+# -------------------------
+
+.env
+.env.*
+
+# -------------------------
+# OS
+# -------------------------
+
+.DS_Store
+Thumbs.db

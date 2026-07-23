@@ -1,0 +1,88 @@
+{
+  "title": "Grande chambre froide",
+
+  "sections": [
+    {
+      "id": "items",
+      "title": "Articles présents",
+      "repeatable": true,
+
+      "questions": [
+        {
+          "field": "name",
+          "label": "Dénomination",
+          "type": "text",
+          "required": true
+        },
+
+        {
+          "field": "product_type",
+          "label": "Type de produit",
+          "type": "select",
+          "options": [
+            "Carcasse",
+            "Prêt à découper",
+            "Caisse",
+            "Roll"
+          ],
+          "required": true
+        },
+
+        {
+          "field": "reception_date",
+          "label": "Date de réception",
+          "type": "date",
+          "required": true
+        },
+
+        {
+          "field": "expiry_date",
+          "label": "DLC",
+          "type": "date",
+          "required": true
+        },
+
+        {
+          "field": "lot_number",
+          "label": "Numéro de lot",
+          "type": "text",
+          "required": true
+        },
+
+        {
+          "field": "quantity_value",
+          "label": "Quantité",
+          "type": "decimal",
+          "required": true
+        },
+
+        {
+          "field": "quantity_unit",
+          "label": "Unité",
+          "type": "select",
+          "options": [
+            "kg",
+            "pièce",
+            "caisse",
+            "roll"
+          ],
+          "required": true
+        },
+
+        {
+          "field": "boning_date",
+          "label": "Date de désossage",
+          "type": "date",
+          "required": false
+        },
+
+        {
+          "field": "comment",
+          "label": "Commentaire",
+          "type": "text",
+          "required": false
+        }
+      ]
+    }
+  ]
+}
