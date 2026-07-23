@@ -1,14 +1,97 @@
 import 'package:flutter/material.dart';
 
+import 'database.dart';
 import 'form_loader.dart';
 import 'inventory_bot.dart';
 import 'questionnaire_page.dart';
 
 
-
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
 
   const HomePage({super.key});
+
+
+  @override
+  State<HomePage> createState() =>
+      _HomePageState();
+
+}
+
+
+
+class _HomePageState extends State<HomePage> {
+
+
+  int pendingCount = 0;
+
+
+  @override
+  void initState() {
+
+    super.initState();
+
+    _loadPending();
+
+  }
+
+
+
+  Future<void> _loadPending() async {
+
+
+    final inventories =
+        await InventoryDatabase.instance
+            .getPendingInventories();
+
+
+    setState(() {
+
+      pendingCount =
+          inventories.length;
+
+    });
+
+  }
+
+
+
+
+  Future<void> _newInventory() async {
+
+
+    final form =
+        await FormLoader
+            .loadColdRoomForm();
+
+
+    final bot =
+        InventoryBot(form);
+
+
+
+    await Navigator.push(
+
+      context,
+
+      MaterialPageRoute(
+
+        builder:(context)=>
+            QuestionnairePage(
+              bot:bot,
+            ),
+
+      ),
+
+    );
+
+
+    // recharge le compteur au retour
+    _loadPending();
+
+  }
+
+
+
 
 
   @override
@@ -17,103 +100,66 @@ class HomePage extends StatelessWidget {
 
     return Scaffold(
 
+
       appBar: AppBar(
 
-        title: const Text(
-          "Butcher Shop Inventory",
-        ),
+        title:
+          const Text(
+            "Butcher Shop Inventory",
+          ),
 
       ),
 
 
-      body: Center(
+
+      body: Padding(
+
+        padding:
+          const EdgeInsets.all(20),
+
 
         child: Column(
 
-          mainAxisAlignment:
-              MainAxisAlignment.center,
+          children:[
 
 
-          children: [
+            Text(
 
+              "Inventaires non synchronisés : $pendingCount",
 
-            const Text(
-
-              "Inventaires",
-
-              style: TextStyle(
-
-                fontSize:28,
-
-                fontWeight:
-                    FontWeight.bold,
-
-              ),
+              style:
+                const TextStyle(
+                  fontSize:18,
+                ),
 
             ),
+
 
 
             const SizedBox(height:40),
 
 
 
-            ElevatedButton(
+            SizedBox(
 
-              style:
-                  ElevatedButton.styleFrom(
+              width:
+                double.infinity,
 
-                    padding:
-                      const EdgeInsets.all(20),
 
+              child: ElevatedButton(
+
+                onPressed:
+                  _newInventory,
+
+
+                child:
+                  const Text(
+                    "Nouvel inventaire",
                   ),
-
-
-              child: const Text(
-
-                "Nouvel inventaire",
-
-                style:
-                    TextStyle(fontSize:18),
 
               ),
 
-
-
-              onPressed: () async {
-
-
-                final form =
-                    await FormLoader
-                    .loadColdRoomForm();
-
-
-                final bot =
-                    InventoryBot(form);
-
-
-
-                Navigator.push(
-
-                  context,
-
-                  MaterialPageRoute(
-
-                    builder:(context)=>
-
-                      QuestionnairePage(
-
-                        bot:bot,
-
-                      ),
-
-                  ),
-
-                );
-
-
-              },
-
-            )
+            ),
 
 
           ],
@@ -126,6 +172,5 @@ class HomePage extends StatelessWidget {
 
 
   }
-
 
 }
