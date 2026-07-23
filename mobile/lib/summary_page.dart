@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'inventory_bot.dart';
 
+import 'database.dart';
 
 class SummaryPage extends StatelessWidget {
 
@@ -130,25 +131,52 @@ class SummaryPage extends StatelessWidget {
               child: ElevatedButton(
 
 
-                onPressed:(){
+              
+                onPressed: () async {
+
+                  await InventoryDatabase.instance
+                      .saveInventory(
+
+                        formType:
+                            "cold_room",
 
 
-                  ScaffoldMessenger
-                      .of(context)
-                      .showSnackBar(
+                        data: {
 
-                    const SnackBar(
+                          "items":
+                              bot.items,
 
-                      content:Text(
+                        },
 
-                        "Inventaire validé (prochaine étape : SQLite)",
+                      );
 
-                      ),
 
-                    ),
 
-                  );
+                  if(context.mounted) {
 
+
+                    ScaffoldMessenger.of(context)
+                        .showSnackBar(
+
+                          const SnackBar(
+
+                            content:
+                              Text(
+                                "Inventaire enregistré localement",
+                              ),
+
+                          ),
+
+                        );
+
+
+                    Navigator.popUntil(
+                      context,
+                      (route)=>route.isFirst,
+                    );
+
+
+                  }
 
                 },
 

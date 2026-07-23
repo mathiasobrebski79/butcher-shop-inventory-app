@@ -19,6 +19,6 @@ samples, guidance on mobile development, and a full API reference.
 flutter create mobile
 cd mobile 
 
-flutter pub get
+flutter pub get ( to load dependencies from pubspec.yaml)
 
 flutter run
