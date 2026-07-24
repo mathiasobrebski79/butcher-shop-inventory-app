@@ -21,10 +21,12 @@ Détail inventaire
 </h1>
 
 
+
 <p>
 Type :
 {{ inventory["form_type"] }}
 </p>
+
 
 
 <p>
@@ -34,9 +36,11 @@ Créé le :
 
 
 
+
 <h2>
 Articles
 </h2>
+
 
 
 
@@ -51,10 +55,11 @@ Article {{ loop.index }}
 </h3>
 
 
+
 <ul>
 
 
-{% for key,value in item["data"].items() %}
+{% for key,value in item.items() %}
 
 <li>
 
@@ -75,7 +80,9 @@ Article {{ loop.index }}
 </ul>
 
 
+
 {% endfor %}
+
 
 
 

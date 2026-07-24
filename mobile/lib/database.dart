@@ -106,7 +106,10 @@ class InventoryDatabase {
 
   }) async {
 
-
+    print("========== JSON ENREGISTRÉ ==========");
+    print(jsonEncode(data));
+    print("====================================");
+  
     final db =
         await instance.database;
 
@@ -171,5 +174,36 @@ class InventoryDatabase {
 
   }
 
+Future<void> markAsSynced(List<String> uuids) async {
 
+  final db =
+      await instance.database;
+
+
+  final batch =
+      db.batch();
+
+
+  for (final uuid in uuids) {
+
+    batch.update(
+      'inventories',
+
+      {
+        'synced': 1
+      },
+
+      where:
+          'uuid = ?',
+
+      whereArgs:
+          [uuid],
+    );
+
+  }
+
+
+  await batch.commit();
+
+}
 }

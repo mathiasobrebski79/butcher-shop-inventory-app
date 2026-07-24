@@ -22,3 +22,5 @@ cd mobile
 flutter pub get ( to load dependencies from pubspec.yaml)
 
 flutter run
+
+power shell : ipconfig

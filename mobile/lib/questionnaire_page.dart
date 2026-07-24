@@ -311,7 +311,7 @@ class _QuestionnairePageState
 
 
 
-              Navigator.pushReplacement(
+              Navigator.push(
 
                 context,
 

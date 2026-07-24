@@ -133,6 +133,9 @@ class SummaryPage extends StatelessWidget {
 
               
                 onPressed: () async {
+                  print("========== BOT ITEMS ==========");
+                  print(bot.items);
+                  print("===============================");
 
                   await InventoryDatabase.instance
                       .saveInventory(
@@ -172,8 +175,8 @@ class SummaryPage extends StatelessWidget {
 
                     Navigator.popUntil(
                       context,
-                      (route)=>route.isFirst,
-                    );
+                      (route) => route.isFirst,
+                      );
 
 
                   }

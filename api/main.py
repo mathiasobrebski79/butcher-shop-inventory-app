@@ -1,5 +1,6 @@
 from pathlib import Path
 from typing import List
+import json
 
 from fastapi import FastAPI, Request, HTTPException
 from fastapi.responses import HTMLResponse
@@ -128,3 +129,27 @@ def inventory_detail(
             "inventory": inventory
         }
     )
+
+@app.get("/debug/{uuid}")
+def debug(uuid: str):
+    return db.get_inventory(uuid)
+
+
+@app.get("/debug/last")
+def debug_last():
+
+    cursor = db.connection.cursor()
+
+    cursor.execute("""
+        SELECT data_json
+        FROM inventories
+        ORDER BY created_at DESC
+        LIMIT 1
+    """)
+
+    row = cursor.fetchone()
+
+    if row is None:
+        return {}
+
+    return json.loads(row["data_json"])
